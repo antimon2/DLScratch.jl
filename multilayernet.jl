@@ -42,10 +42,11 @@ function accuracy{T}(net::MultiLayerNet{T}, x::AbstractArray{T}, t::AbstractArra
     mean(y .== t)
 end
 
-immutable MultiLayerNetGrads{T}
+immutable MultiLayerNetParams{T}
     Ws::Vector{AbstractMatrix{T}}
     bs::Vector{AbstractVector{T}}
 end
+typealias MultiLayerNetGrads MultiLayerNetParams
 
 @inline _get_W{T}(lyr::AffineLayer{T}) = lyr.W
 @inline _get_b{T}(lyr::AffineLayer{T}) = lyr.b
